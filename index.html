@@ -1,0 +1,123 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="style.css"">
+        <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js"></script>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone-min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+
+<!--- simple --->
+<script id="grouplist" type="text/template">
+  <ul class="nav nav-tabs nav-stacked">
+    <li data-filter="all">
+      <a href="#">Home</a>
+    </li>
+    <li data-filter="all">
+    </span><a href="#"><span class="glyphicon glyphicon-menu-hamburger"></span> All Items</a>
+    </li>
+    <li data-filter="star">
+      <a href="#"><span class="glyphicon glyphicon-star"></span> Starred</a>
+    </li>
+    <li data-filter="read">
+       <a href="#"><span class="glyphicon glyphicon-check"></span> unread</a>
+    </li>
+    <li data-filter="like">
+      <a href="#"><span class="glyphicon glyphicon-heart-empty"></span> Liked</a>
+    </li>
+
+
+
+  </ul>
+</script>
+<script id="feedItemView" type="text/template">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">
+        <a href="<%= link %>"><%= title %></a>
+      </h3>
+    </div>
+    <div class="panel-body">
+    <span class="label label-info"><%= feed_src_title %></span>
+
+    </div>
+    <div class="panel-footer">
+      <button type="button" id="star" class="btn <%= star == 1 ? 'btn-primary' : ' btn-default' %>"><span class="glyphicon glyphicon-star"></span> Star</button>
+      <button type="button" id="unread" class="btn <%= read == 1 ? 'btn-primary' : ' btn-default' %>"><span class="glyphicon glyphicon-check"></span> Mark as <%= read == 1 ? 'unread' : 'read' %></button>
+      <!-- <button type="button" id="sendto"class="btn btn-default">Send To</button> -->
+      <!-- <button type="button" id="share" class="btn btn-default">Share</button> -->
+        <button type="button" id="like" class="btn <%= like == 1 ? 'btn-primary' : ' btn-default' %>"><span class="glyphicon glyphicon-heart-empty"></span> <%= like == 1 ? 'unlike' : 'Like' %></button>
+    </div>
+  </div>
+</script>
+    </head>
+    <body>
+
+        <div class="container">
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+			<nav class="navbar navbar-default" role="navigation">
+				<div class="navbar-header">
+					 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button> <a class="navbar-brand" href="#">Feedify</a>
+				</div>
+
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+					<form id="subscribefeed" class="navbar-form navbar-left" role="search">
+            <label>New RSS Source</label>
+            <div class="form-group">
+
+              <input id="title" placeholder="source title" type="text" class="form-control" />
+            </div>
+            <div class="form-group">
+							<input id="feed_url" placeholder="source url" type="text" class="form-control" />
+						</div> <button type="button" id="subadd" class="btn btn-default">add</button>
+					</form>
+					<ul class="nav navbar-nav navbar-right">
+            <!-- <li>
+							<a href="#">Link</a>
+						</li>
+						<li class="dropdown">
+							 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown<strong class="caret"></strong></a>
+							<ul class="dropdown-menu">
+								<li>
+									<a href="#">Action</a>
+								</li>
+								<li>
+									<a href="#">Another action</a>
+								</li>
+								<li>
+									<a href="#">Something else here</a>
+								</li>
+								<li class="divider">
+								</li>
+								<li>
+									<a href="#">Separated link</a>
+								</li>
+							</ul> -->
+						</li>
+					</ul>
+				</div>
+
+			</nav>
+			<div class="row clearfix">
+				<div id="controlview" class="col-md-4 column">
+				</div>
+				<div id="collectionView" class="col-md-8 column">
+				</div>
+
+			</div>
+			<div class="row clearfix">
+				<div class="col-md-12 column">
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+        <script type="text/javascript" src="./application.js"></script>
+    </body>
+</html>
+

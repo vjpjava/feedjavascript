@@ -1,0 +1,11 @@
+/* style.css */
+
+p {
+    font-size: 18px;
+}
+
+#collectionView {
+  max-height:600px;
+  overflow:auto;
+}
+
